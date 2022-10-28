@@ -1,0 +1,53 @@
+
+    <html xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml" >
+    
+    <head>
+        <title>Practica 01</title>
+        <meta charset="UTF-8">
+        <link href="css/estilo01.css" rel="stylesheet" type="text/css"/>
+        
+       <!-- 
+       <link href="../Static/css/estilo01.css" rel="stylesheet" type="text/css"/> 
+       -->
+       
+    </head>
+        
+        <body>
+        
+        <header th:replace="layout/plantilla :: header"></header>       
+
+        <h2>Datos de paises</h2>
+        <a th:href="@{/estado/nuevo}">Nuevo pais</a>
+        <div th:if="${estados != null and !estados.empty}">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Lugar</th>
+                        <th>Nombre del estado</th>
+                        <th>Capital</th>
+                        <th>Poblacion</th>
+                        <th>Cantidad de Costas</th>
+                        <th>Cantidad de Monumentos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="estado: ${estados}">
+                        <td>[[${estado.lugar}]]</td>
+                        <td>[[${estado.nombre_estado}]]</td>
+                        <td>[[${estado.capital}]]</td>
+                        <td>[[${estado.poblacion}]]</td>
+                        <td>[[${estado.cant_costas}]]</td>
+                        <td>[[${estado.cant_monumentos}]]</td>
+                        <td><a th:href="@{/estado/actualiza/}+${estado.id_pais}">Actualizar</a></td>
+                        <td><a th:href="@{/estado/elimina/}+${estado.id_pais}">Eliminar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${estados == null and estados.empty}">
+            <h3>No tenemos paises que mostrar</h3>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

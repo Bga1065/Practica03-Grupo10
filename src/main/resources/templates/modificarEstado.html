@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org"
+       xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Practica 01</title>
+        <meta charset="UTF-8">
+        <link href="../css/estilo01.css" rel="stylesheet" type="text/css"/>
+        
+   </head>
+    
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        
+        <h2>Datos de Cliente</h2>
+        <a th:href="@{/}">Regresar</a>
+        <hr/>
+        
+        <form th:action="@{/estado/guardar}"
+              method="post"
+              th:object="${estado}">
+            <input type="hidden" name="id_pais" th:field="*{id_pais}"/>
+            <fieldset>
+                
+                <label for="Lugar">Lugar:</label>
+                <input type="text"
+                       name="Lugar"
+                       th:field="*{lugar}"
+                       placeholder="Pais"/>
+            </fieldset>
+            <fieldset>
+                <label for="nombre_estado">Nombre del estado:</label>
+                <input type="text"
+                       name="nombre_estado"
+                       th:field="*{nombre_estado}"
+                        placeholder="Estado:"/>
+            </fieldset>
+            <fieldset>
+                <label for="capital">Capital:</label>
+                <input type="capital"
+                       name="capital"
+                       th:field="*{capital}"
+                       placeholder="Capital:"/>
+            </fieldset>
+            <fieldset>
+                <label for="poblacion">Poblacion:</label>
+                <input type="int"
+                       name="poblacion"
+                       th:field="*{poblacion}"
+                        placeholder="Poblacion:"/>
+            </fieldset>
+            <fieldset>
+                <label for="cant_costas">Cantidad de costas</label>
+                <input type="int"
+                       name="cant_costas"
+                       th:field="*{cant_costas}"
+                        placeholder="Cantidad de costas:"/>
+            </fieldset>
+            <fieldset>
+                <label for="cant_monumentos">Cantidad de monumentos</label>
+                <input type="int"
+                       name="cant_monumentos"
+                       th:field="*{cant_monumentos}"
+                        placeholder="Cantidad de monumentos:"/>
+            </fieldset>
+            
+            <hr/>
+            <input type="submit" name="guardar" value ="Guardar"/>
+        </form>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
